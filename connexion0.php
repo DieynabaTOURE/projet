@@ -2,16 +2,15 @@
 <form action='#' method='post'>
         <fieldset style='width: 500px;height: 150px; background: gray;'>
             <legend>
-               Ouverture de session
-            </legend>
+                Connexion espace membre
+            </legend><br/>
             <label>Profil :</label>
             <input type='text' placeholder='profil' name='login'><br/><br/>
             <label>Mot de passe :</label>
-            <input type='text' placeholder='password' name='password'><br/><br/>
+            <input type='password' placeholder='password' name='password'><br/><br/>
             <input type='submit' value='Connexion' name='connecter'>
 </fieldset>
     </form>
-   
     <?php
 
   $login = "user";
@@ -48,5 +47,3 @@
       }
 
  ?>
-
-   

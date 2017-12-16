@@ -1,17 +1,17 @@
 <?php
 session_start();
-if(!isset ($_SESSION ['login']))
-{
-    header ('location: connexion0.php');
-}
-    else {
-if($_SESSION['login'] == 'user')
+if($_SESSION['login']=='user' && $_SESSION['password']=='user')
 {
     ?>
     <?php
 $date = date("d/m/Y");
  $heure = date("H:i");
  print("<h3>Nous sommes le $date Il est $heure</h3>");
+ echo'<fieldset style="width:300px;height:150px;background:pink;float:right">';
+ echo'<h2 style="<background-color:pink;color:gray;width:200px;">';Bonjour;
+ echo'<p>souhaiter vous vous deconnecter...</p>';
+ echo'<a href="connexion0.php"><input type="submit" value="deconnexion"></a>';
+ echo"</fieldset>"
 ?>
 
 
@@ -19,11 +19,11 @@ $date = date("d/m/Y");
         <fieldset style='width: 500px;height: 150px; background: gray;'>
             <legend>
                 Connexion espace membre
-            </legend>
+            </legend><br/>
             <label>Profil :</label>
             <input type='text' placeholder='profil' name='login'><br/><br/>
             <label>Mot de passe :</label>
-            <input type='text' placeholder='password' name='password'><br/><br/>
+            <input type='password' placeholder='password' name='password'><br/><br/>
             <input type='submit' value='Connexion' name='connecter'>
 </fieldset>
     </form><br/>
@@ -59,13 +59,8 @@ $date = date("d/m/Y");
       else {
           echo "Veuillez entrez vos infos";
       }
-?>
-     <?php
-
-
-
-if (isset($_SESSION['login']) && isset($_SESSION['password'])) {
-    echo " <nav>
+     ?>
+     <?php echo " <nav>
     <ul>
         <li><strong>ACCUEIL</strong></li>
         <hr class='separation'>
@@ -87,28 +82,27 @@ if (isset($_SESSION['login']) && isset($_SESSION['password'])) {
 </nav>
 <a href='calcul.php'><h4>CALCULATRICE</h4></a>";
 
-echo '<fieldset  style="width: 300px;height: 150px; background: pink;">';
-echo '<h2 style="background-color: pink; color: grey; width: 200px;">Bonjours      ' .$_SESSION['login'].'</h2>';
+?>
+ 
+     <?php
+session_start();
 
- echo '<p>Voulez vous deconnecter??? </p>';
- echo '<a href="logout.php"><input type="submit" value="DECONNEXION" ></a>';
- echo '</fieldset>';
+
+if (isset($_SESSION['login']) && isset($_SESSION['password'])) {
+    
+    echo "Votre login est: ".$_SESSION['login'];
 }
     ?>
+   <?php
+$fichier=fopen('fichier.txt', 'r+');
+$line=fgets($fichier);
+fclose($fichier);
+echo"bonjour:".$line;
+?>
     <?php
-
-  
-        if (isset($_SESSION['login']) && isset($_SESSION['password']))
-        {
-         
-        }
-        ?>
-
-    <?php
-}   
+}
 else
 {
     echo"Désolé vous n'etes pas autorisé à acceder à ce site.";
 }
-    }
 ?>
